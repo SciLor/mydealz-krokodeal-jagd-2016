@@ -1,0 +1,6 @@
+//Hilfskommandos um aus Mydealz User zu extrahieren
+./curl 	https://www.mydealz.de/diskussion/krokojagd-2016-899500?page=312	 >> mydealz
+grep -Eo "username&#34;:&#34;([a-zA-Z0-9]*)&" mydealz > mydealzUsers
+sort -u mydealzUsers > mydealzUsersCleared
+sed -i -e 's/username&#34;:&#34;//g' mydealzUsersCleared
+sed -i -e 's/&//g' mydealzUsersCleared
